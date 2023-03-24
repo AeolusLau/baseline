@@ -1,7 +1,7 @@
 FROM ubuntu
 
 RUN apt update -y && \
-    apt install -y --no-install-recommends bat clang clangd clang-format cmake curl fzf git patch python3 python3-pip ripgrep tree zsh && \
+    apt install -y --no-install-recommends bat clang clangd clang-format cmake curl fzf git golang make patch python3 python3-pip ripgrep tree unzip zsh && \
     apt clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -49,6 +49,8 @@ RUN echo '' >> ~/.zshrc && \
     echo 'alias vi=nvim' >> ~/.zshrc && \
     echo 'alias vim=nvim' >> ~/.zshrc
 RUN ln -s /usr/bin/batcat /usr/local/bin/bat
+
+ENV MAKEFLAGS=-j6
 
 WORKDIR /root
 CMD [ "zsh" ]
