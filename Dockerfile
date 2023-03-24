@@ -23,6 +23,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_19.x | bash - && \
     apt clean && \
     rm -rf /var/lib/apt/lists/* && \
     corepack enable
+COPY .npmrc /root/
 
 # Install a newer version of neovim, and install configures.
 RUN curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage && \
@@ -41,7 +42,8 @@ RUN mkdir -p ~/inception ~/.config && \
 RUN nvim +PlugInstall +qall
 # It seems nvim can't hold a long arugment (perhaps 256?), so we break it to 2 commands.
 RUN nvim -c 'CocInstall -sync coc-clangd coc-cmake coc-cspell-dicts coc-dictionary coc-emoji coc-explorer coc-floaterm coc-format-json coc-fzf-preview coc-git coc-html coc-java|q' && \
-    nvim -c 'CocInstall -sync coc-json coc-lists coc-markdownlint coc-marketplace coc-protobuf coc-pyright coc-sh coc-snippets coc-spell-checker coc-sql coc-tsserver coc-vimlsp coc-word|q'
+    nvim -c 'CocInstall -sync coc-json coc-lists coc-markdownlint coc-marketplace coc-protobuf coc-pyright coc-sh coc-snippets coc-spell-checker coc-sql coc-tsserver coc-vimlsp coc-word|q' && \
+    pnpm store prune
 
 # Some convenient configure.
 RUN echo '' >> ~/.zshrc && \
