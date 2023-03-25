@@ -1,7 +1,25 @@
 FROM ubuntu
 
 RUN apt update -y && \
-    apt install -y --no-install-recommends bat clang clangd clang-format cmake curl fzf git golang make patch python3 python3-pip ripgrep tree unzip zsh && \
+    apt install -y --no-install-recommends bat \
+                                           clang \
+                                           clangd \
+                                           clang-format \
+                                           cmake \
+                                           curl \
+                                           fzf \
+                                           git \
+                                           golang \
+                                           less \
+                                           make \
+                                           patch \
+                                           python3 \
+                                           python3-pip \
+                                           ripgrep \
+                                           ssh \
+                                           tree \
+                                           unzip \
+                                           zsh && \
     apt clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -46,13 +64,14 @@ RUN nvim -c 'CocInstall -sync coc-clangd coc-cmake coc-cspell-dicts coc-dictiona
     pnpm store prune
 
 # Some convenient configure.
+COPY .ssh /root/.ssh
 RUN echo '' >> ~/.zshrc && \
     echo 'alias python=python3' >> ~/.zshrc && \
     echo 'alias vi=nvim' >> ~/.zshrc && \
-    echo 'alias vim=nvim' >> ~/.zshrc
-RUN ln -s /usr/bin/batcat /usr/local/bin/bat
-
+    echo 'alias vim=nvim' >> ~/.zshrc && \
+    ln -s /usr/bin/batcat /usr/local/bin/bat
 ENV MAKEFLAGS=-j6
+ENV CPLUS_INCLUDE_PATH=$(CPLUS_INCLUDE_PATH):/usr/include/c++/11:/usr/include/x86_64-linux-gnu/c++/11
 
 WORKDIR /root
 CMD [ "zsh" ]
