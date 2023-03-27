@@ -7,7 +7,6 @@ RUN apt update -y && \
                                            clang-format \
                                            cmake \
                                            curl \
-                                           fzf \
                                            git \
                                            golang \
                                            less \
@@ -26,9 +25,14 @@ RUN apt update -y && \
 # Configure zsh: on-my-zsh & powerlevel10k
 ARG TERM COLORTERM
 ENV TERM=$TERM COLORTERM=$COLORTERM LC_ALL=C.UTF-8
-RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-RUN git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-RUN sed -i '/^ZSH_THEME=/c\ZSH_THEME="powerlevel10k\/powerlevel10k"' ~/.zshrc
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && \
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k && \
+    git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions && \
+    sed -i '/^ZSH_THEME=/c\ZSH_THEME="powerlevel10k\/powerlevel10k"' ~/.zshrc && \
+    sed -i '/^plugins=(git)/c\plugins=(git z zsh-autosuggestions)' ~/.zshrc && \
+    mkdir -p ~/.cache/gitstatus && \
+    cd ~/.cache/gitstatus && \
+    curl -fsSL https://github.com/romkatv/gitstatus/releases/download/v1.5.4/gitstatusd-linux-x86_64.tar.gz | tar zxv
 # The following there instructions is used to mock configure wizard of p10k
 COPY .p10k.zsh /root/
 COPY zshrc.patch /tmp/
@@ -58,10 +62,11 @@ RUN mkdir -p ~/inception ~/.config && \
     git clone https://github.com/AeolusLau/vim-script.git ~/inception/vim-script && \
     ln -s ~/inception/vim-script/nvim ~/.config/nvim
 RUN nvim +PlugInstall +qall
-# It seems nvim can't hold a long arugment (perhaps 256?), so we break it to 2 commands.
+# It seems nvim can't hold a long arugment (perhaps 256?), so we break it into 2 commands.
 RUN nvim -c 'CocInstall -sync coc-clangd coc-cmake coc-cspell-dicts coc-dictionary coc-emoji coc-explorer coc-floaterm coc-format-json coc-fzf-preview coc-git coc-html coc-java|q' && \
     nvim -c 'CocInstall -sync coc-json coc-lists coc-markdownlint coc-marketplace coc-protobuf coc-pyright coc-sh coc-snippets coc-spell-checker coc-sql coc-tsserver coc-vimlsp coc-word|q' && \
-    pnpm store prune
+    pnpm store prune && \
+    "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/plugged/fzf/install --all --no-bash --no-fish
 
 # Some convenient configure.
 COPY .ssh /root/.ssh
