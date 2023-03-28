@@ -63,8 +63,7 @@ RUN mkdir -p ~/inception ~/.config && \
     ln -s ~/inception/vim-script/nvim ~/.config/nvim
 RUN nvim +PlugInstall +qall
 # It seems nvim can't hold a long arugment (perhaps 256?), so we break it into 2 commands.
-RUN nvim -c 'CocInstall -sync coc-clangd coc-cmake coc-cspell-dicts coc-dictionary coc-emoji coc-explorer coc-floaterm coc-format-json coc-fzf-preview coc-git coc-html coc-java|q' && \
-    nvim -c 'CocInstall -sync coc-json coc-lists coc-markdownlint coc-marketplace coc-protobuf coc-pyright coc-sh coc-snippets coc-spell-checker coc-sql coc-tsserver coc-vimlsp coc-word|q' && \
+RUN nvim -c 'CocInstall -sync coc-clangd coc-cmake coc-cspell-dicts coc-explorer coc-floaterm coc-fzf-preview coc-git coc-java coc-json coc-lists coc-markdownlint coc-marketplace coc-pyright coc-sh coc-snippets coc-spell-checker coc-vimlsp|q' && \
     "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/plugged/fzf/install --all --no-bash --no-fish && \
     pnpm store prune 
 
