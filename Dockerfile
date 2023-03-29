@@ -64,7 +64,24 @@ RUN mkdir -p ~/inception ~/.config && \
     git clone https://github.com/AeolusLau/vim-script.git ~/inception/vim-script && \
     ln -s ~/inception/vim-script/nvim ~/.config/nvim
 RUN nvim +PlugInstall +qall && \
-    nvim -c 'CocInstall -sync coc-clangd coc-cmake coc-cspell-dicts coc-explorer coc-floaterm coc-fzf-preview coc-git coc-java coc-json coc-lists coc-markdownlint coc-marketplace coc-pyright coc-sh coc-snippets coc-spell-checker coc-vimlsp|q' && \
+    nvim +'CocInstall -sync \
+             coc-clangd \
+             coc-cmake \
+             coc-explorer \
+             coc-floaterm \
+             coc-fzf-preview \
+             coc-git \
+             coc-java \
+             coc-json \
+             coc-lists \
+             coc-markdownlint \
+             coc-marketplace \
+             coc-pyright \
+             coc-sh \
+             coc-snippets \
+             coc-spell-checker \
+             coc-vimlsp' \
+         +qall && \
     "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/plugged/fzf/install --all --no-bash --no-fish && \
     pnpm store prune && \
     yarn cache clean
