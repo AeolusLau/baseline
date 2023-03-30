@@ -62,6 +62,7 @@ RUN pip3 install pynvim && \
 RUN curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 RUN mkdir -p ~/inception ~/.config && \
     git clone https://github.com/AeolusLau/vim-script.git ~/inception/vim-script && \
+    git -C ~/inception/vim-script remote set-url origin git@github.com:AeolusLau/vim-script.git && \
     ln -s ~/inception/vim-script/nvim ~/.config/nvim
 RUN nvim +PlugInstall +qall && \
     nvim +'CocInstall -sync \
@@ -79,12 +80,13 @@ RUN nvim +PlugInstall +qall && \
              coc-pyright \
              coc-sh \
              coc-snippets \
-             coc-spell-checker \
              coc-vimlsp' \
          +qall && \
     "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/plugged/fzf/install --all --no-bash --no-fish && \
     pnpm store prune && \
     yarn cache clean
+# Disable coc-spell-checker, which doesn't work properly on ubuntu image. (Maybe caused by absence of dictionaries?)
+RUN sed -i '/^}/c\,\"disabled\":\[\"coc-spell-checker\"\]}' ~/.config/coc/extensions/package.json
 
 # Some convenient configure.
 COPY .ssh /root/.ssh
