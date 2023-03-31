@@ -38,13 +38,13 @@ COPY .p10k.zsh /root/
 COPY zshrc.patch /tmp/
 RUN patch -u /root/.zshrc /tmp/zshrc.patch && rm /tmp/zshrc.patch
 
-# Install a newer version of nodejs, and enable yarn.
+# Install a newer version of nodejs, and enable corepack.
 # https://github.com/nodesource/distributions#debinstall
 RUN curl -fsSL https://deb.nodesource.com/setup_19.x | bash - && \
     apt install -y --no-install-recommends nodejs && \
     apt clean && \
     rm -rf /var/lib/apt/lists/* && \
-    corepack enable
+    corepack enable  # Enable yarn & pnpm.
 COPY .npmrc /root/
 
 # Install a newer version of neovim, and install configures.
@@ -77,6 +77,7 @@ RUN nvim +PlugInstall +qall && \
              coc-lists \
              coc-markdownlint \
              coc-marketplace \
+             coc-pairs \
              coc-pyright \
              coc-sh \
              coc-snippets \
