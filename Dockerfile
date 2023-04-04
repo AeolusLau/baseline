@@ -95,7 +95,9 @@ RUN echo '' >> ~/.zshrc && \
     echo 'alias python=python3' >> ~/.zshrc && \
     echo 'alias vi=nvim' >> ~/.zshrc && \
     echo 'alias vim=nvim' >> ~/.zshrc && \
-    ln -s /usr/bin/batcat /usr/local/bin/bat
+    ln -s /usr/bin/batcat /usr/local/bin/bat && \
+    git config --global user.email aeoluslau@gmail.com && \
+    git config --global user.name liulichao
 ENV MAKEFLAGS=-j6
 ENV CPLUS_INCLUDE_PATH=$(CPLUS_INCLUDE_PATH):/usr/include/c++/11:/usr/include/x86_64-linux-gnu/c++/11
 
