@@ -5,6 +5,7 @@ RUN apt update -y && \
                                            clang \
                                            clangd \
                                            clang-format \
+                                           clang-tidy \
                                            cmake \
                                            curl \
                                            git \
@@ -61,9 +62,12 @@ RUN pip3 install pynvim && \
     npm cache clean --force
 RUN curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 RUN mkdir -p ~/inception ~/.config && \
-    git clone https://github.com/AeolusLau/vim-script.git ~/inception/vim-script && \
-    git -C ~/inception/vim-script remote set-url origin git@github.com:AeolusLau/vim-script.git && \
-    ln -s ~/inception/vim-script/nvim ~/.config/nvim
+    git clone https://github.com/AeolusLau/baseline.git ~/inception/baseline && \
+    git -C ~/inception/baseline remote set-url origin git@github.com:AeolusLau/baseline.git && \
+    ln -s ~/inception/baseline/nvim ~/.config/nvim && \
+    ln -s ~/inception/baseline/_clang-tidy ~/.clang-tidy && \
+    mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}"/clangd && \
+    ln -s ~/inception/baseline/_clangd "${XDG_CONFIG_HOME:-$HOME/.config}"/clangd/config.yaml
 RUN nvim +PlugInstall +qall && \
     nvim +'CocInstall -sync \
              coc-clangd \
