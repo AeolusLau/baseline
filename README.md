@@ -1,5 +1,9 @@
 # My Baseline
 
+## Neovim configure script
+
+## A simplest docker image to work on
+
 Build a docker image with:
 
 - Ubuntu

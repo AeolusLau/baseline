@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/Users/liulichao/workspace/ktrace/third_party/jsoncpp/cmake'
+let g:netrw_dirhist_8='/Users/liulichao/workspace/kwailink-android'
+let g:netrw_dirhist_7='/Users/liulichao/Downloads'
+let g:netrw_dirhist_6='/Users/liulichao/Downloads/kwai 9'
+let g:netrw_dirhist_5='/Users/liulichao/Downloads/APP_DEUBG_LOG_FILE-717319043-1615458844597'
+let g:netrw_dirhist_4='/Users/liulichao/workspace/klink/.cache'
+let g:netrw_dirhist_3='/Users/liulichao/Downloads/uploadlogs'
+let g:netrw_dirhist_2='/Users/liulichao/opensource/llvm-project/llvm/utils/gn/build/libs/pthread'
+let g:netrw_dirhist_1='/Users/liulichao/Downloads/2021-01-14'
+let g:netrw_dirhist_0='/Users/liulichao/workspace/klink/link'
