@@ -1,25 +1,27 @@
 FROM ubuntu
 
 RUN apt update -y && \
-    apt install -y --no-install-recommends bat \
-                                           clang \
-                                           clangd \
-                                           clang-format \
-                                           clang-tidy \
-                                           cmake \
-                                           curl \
-                                           git \
-                                           golang \
-                                           less \
-                                           make \
-                                           patch \
-                                           python3 \
-                                           python3-pip \
-                                           ripgrep \
-                                           ssh \
-                                           tree \
-                                           unzip \
-                                           zsh && \
+    apt upgrade -y && \
+    apt install -y --no-install-recommends \
+        bat \
+        clang \
+        clang-format \
+        clang-tidy-15 \
+        clangd \
+        cmake \
+        curl \
+        git \
+        golang \
+        less \
+        make \
+        patch \
+        python3 \
+        python3-pip \
+        ripgrep \
+        ssh \
+        tree \
+        unzip \
+        zsh && \
     apt clean && \
     rm -rf /var/lib/apt/lists/*
 
