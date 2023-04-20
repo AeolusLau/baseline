@@ -1,8 +1,14 @@
-# My Baseline
+# Baseline
 
-## Neovim configure script
+## 1. Neovim configure script
 
-## A simplest docker image to work on
+The configure script for (neo)vim.
+
+- Options
+- Plugins
+- Key mappings
+
+## 2. A simplest docker image to work on
 
 Build a docker image with:
 

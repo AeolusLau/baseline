@@ -35,8 +35,8 @@ RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master
     cd ~/.cache/gitstatus && \
     curl -fsSL https://github.com/romkatv/gitstatus/releases/download/v1.5.4/gitstatusd-linux-x86_64.tar.gz | tar zxv
 # The following there instructions is used to mock configure wizard of p10k
-COPY .p10k.zsh /root/
-COPY zshrc.patch /tmp/
+COPY dedicated/_p10k.zsh /root/.p10k.zsh
+COPY dedicated/zshrc.patch /tmp/
 RUN patch -u /root/.zshrc /tmp/zshrc.patch && rm /tmp/zshrc.patch
 
 # Install a newer version of nodejs, and enable corepack.
@@ -46,7 +46,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_19.x | bash - && \
     apt clean && \
     rm -rf /var/lib/apt/lists/* && \
     corepack enable  # Enable yarn & pnpm.
-COPY .npmrc /root/
+COPY generic/_npmrc /root/.npmrc
 
 # Install a newer version of neovim, and install configures.
 RUN curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage && \
@@ -64,10 +64,11 @@ RUN curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim
 RUN mkdir -p ~/inception ~/.config && \
     git clone https://github.com/AeolusLau/baseline.git ~/inception/baseline && \
     git -C ~/inception/baseline remote set-url origin git@github.com:AeolusLau/baseline.git && \
-    ln -s ~/inception/baseline/nvim ~/.config/nvim && \
-    ln -s ~/inception/baseline/_clang-tidy ~/.clang-tidy && \
+    ln -s ~/inception/baseline/generic/nvim ~/.config/nvim && \
     mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}"/clangd && \
-    ln -s ~/inception/baseline/_clangd "${XDG_CONFIG_HOME:-$HOME/.config}"/clangd/config.yaml
+    ln -s ~/inception/baseline/generic/_clangd "${XDG_CONFIG_HOME:-$HOME/.config}"/clangd/config.yaml && \
+    ln -s ~/inception/baseline/generic/_clang-tidy ~/.clang-tidy && \
+    ln -s ~/inception/baseline/generic/_clang-format ~/.clang-format
 RUN nvim +PlugInstall +qall && \
     nvim +'CocInstall -sync \
              coc-clangd \

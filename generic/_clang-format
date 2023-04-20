@@ -1,0 +1,16 @@
+---
+BasedOnStyle:  Google
+---
+Language:        Cpp
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+DerivePointerAlignment: false
+PointerAlignment: Left
+---
+Language:        Java
+---
+Language:        ObjC
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+DerivePointerAlignment: false
+PointerAlignment: Left
