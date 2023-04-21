@@ -16,6 +16,7 @@ nnoremap { b{w
 nnoremap } }w
 
 " sort i /.*map \(.silent.\)\? *\(.expr.\)\? \?/
+    nmap <silent>       <C-/>       :nohlsearch<CR>
 inoremap <silent><expr> <C-b>       coc#pum#visible() ? coc#pum#scroll(0) : "\<C-b>"
 inoremap <silent><expr> <C-f>       coc#pum#visible() ? coc#pum#scroll(1) : "\<C-f>"
 inoremap <silent><expr> <C-j>       coc#pum#visible() ? coc#pum#next(1) : coc#refresh()
@@ -37,6 +38,8 @@ inoremap <silent><expr> <CR>        coc#pum#visible() ? coc#_select_confirm() : 
     nmap                <leader>fix <Plug>(coc-fix-current)
     nmap                <leader>jl  :<C-u>CocCommand fzf-preview.Jumps<CR>  "Jump List
     nmap                <leader>ll  :<C-u>CocList<CR>
+    nmap                <leader>lr  :<C-u>CocListResume<CR>
+    nmap                <leader>m   :<C-u>CocList mru<CR>
     nmap                <leader>o   :CocCommand explorer --preset floating<CR>
 nnoremap                <leader>p   "+p
 nnoremap                <leader>Q   :q!<CR>
@@ -47,7 +50,7 @@ nnoremap                <leader>q   :q<CR>
     nmap                <leader>rf  <Plug>(coc-refactor)
     nmap                <leader>rg  :<C-u>CocCommand fzf-preview.ProjectGrep <C-r><C-w><CR>
     nmap                <leader>rn  <Plug>(coc-rename)
-nnoremap <silent>       <leader>sb  :<C-u>CocList -I symbols<CR>
+    nmap                <leader>sb  :<C-u>CocList -I symbols<CR>
 nnoremap <silent>       <leader>sh  :FloatermToggle<CR>
     nmap                <leader>st  :<C-u>CocCommand fzf-preview.GitStatus<CR>
     nmap                <leader>sw  :CocCommand clangd.switchSourceHeader<CR>
@@ -74,7 +77,7 @@ inoremap <silent><expr> <Tab>       coc#pum#visible() ? coc#pum#next(1) : coc#ex
     nmap                ga          <Plug>(EasyAlign)
     nmap <silent>       gd          <Plug>(coc-definition)
     nmap <silent>       gi          <Plug>(coc-implementation)
-nnoremap                gq          :FormatCode<CR>
+    nmap                gq          :FormatCode<CR>
     nmap <silent>       gr          <Plug>(coc-references)
     nmap <silent>       gy          <Plug>(coc-type-definition)
     xmap                ic          <Plug>(coc-classobj-i)
@@ -83,7 +86,7 @@ nnoremap                gq          :FormatCode<CR>
     omap                if          <Plug>(coc-funcobj-i)
 tnoremap                jk          <C-\><C-n>
 inoremap                jk          <Esc>
-nnoremap <silent>       K           :call ShowDocumentation()<CR>
+    nmap <silent>       K           :call ShowDocumentation()<CR>
 
 function! ShowDocumentation()
   if CocAction('hasProvider', 'hover')

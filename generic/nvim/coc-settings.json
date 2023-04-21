@@ -3,15 +3,15 @@
     "coc.preferences.extensionUpdateCheck": "daily",
     "coc.preferences.jumpCommand": "drop",
     "coc.preferences.silentAutoupdate": true,
-    "snippet.statusText": "SNIP",
-    "git.conflict.current.hlGroup": "DiffChange",
     "diagnostic.displayByAle": false,
-    "semanticTokens.enable": true,
+    "git.conflict.current.hlGroup": "DiffChange",
+    "npm.binPath": "pnpm",
     "python.formatting.provider": "yapf",
+    "semanticTokens.enable": true,
+    "snippet.statusText": "SNIP",
     "snippets.extends": {
         "cpp": ["c"]
     },
-    "npm.binPath": "pnpm",
     "cSpell.showStatus": false,
     "cSpell.userWords": [
       "alignas",
@@ -60,9 +60,13 @@
       "neovim",
       "nodiscard",
       "nolint",
+      "nolintbegin",
+      "nolintend",
+      "nolintnextline",
       "nvim",
       "objc",
       "objcpp",
+      "pnpm",
       "posix",
       "powerlevel",
       "protobuf",
@@ -78,6 +82,7 @@
       "thiz",
       "wifi",
       "woverloaded",
-      "xquic"
+      "xquic",
+      "yapf"
     ]
 }

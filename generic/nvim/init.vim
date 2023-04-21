@@ -16,19 +16,19 @@ set suffixes-=.h wildignore+=.class,.o,.obj,.swp,~ wildmenu wildmode=longest:ful
 set termguicolors
 set timeoutlen=800  " Speed your fingers up, man~
 set title
-set updatetime=1000
+set updatetime=100
 
 "set viminfo='1000        " TODO: What's this?
 
 call plug#begin(stdpath('data') . '/plugged')
 Plug 'chrisbra/Colorizer'
-"Plug 'dense-analysis/ale'
 Plug 'github/copilot.vim'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
 Plug 'google/vim-maktaba'
 Plug 'honza/vim-snippets'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
@@ -36,25 +36,21 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rcarriga/nvim-notify'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'voldikss/vim-floaterm'
 call plug#end()
 
 " vim-airline
-let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#coc#enabled = 1
-let g:airline#extensions#coc#show_coc_status = 1
-let airline#extensions#coc#error_symbol = 'E:'
-let airline#extensions#coc#warning_symbol = 'W:'
-let airline#extensions#coc#stl_format_err = '%C(L%L)'
-let airline#extensions#coc#stl_format_warn = '%C(L%L)'
+let g:airline#extensions#fzf#enabled = 1
 let g:airline#extensions#hunks#coc_git = 1
+let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
-" ale
-"let g:ale_disable_lsp = 1
-"let g:ale_cpp_cc_options = '-std=c++17 -Wall'
-"let g:ale_use_global_executables = 1
+" onedark
+let g:onedark_terminal_italics = 1
+colorscheme onedark
 
 " coc.nvim
 let g:coc_global_extensions = [
@@ -77,23 +73,8 @@ let g:coc_global_extensions = [
 \  'coc-vimlsp',
 \]
 
-hi CocSearch ctermfg=12 guifg=#18A3FF
-hi CocMenuSel ctermbg=109 guibg=#13354A
-
-" Integrate coc.nvim and vim-airline
-function! StatusDiagnostic() abort
-  let info = get(b:, 'coc_diagnostic_info', {})
-  if empty(info) | return '' | endif
-  let msgs = []
-  if get(info, 'error', 0)
-    call add(msgs, 'E' . info['error'])
-  endif
-  if get(info, 'warning', 0)
-    call add(msgs, 'W' . info['warning'])
-  endif
-  return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
-endfunction
-set statusline^=%{StatusDiagnostic()}%{get(b:,'coc_current_function','')}
+"hi CocSearch ctermfg=12 guifg=#18A3FF
+"i CocMenuSel ctermbg=109 guibg=#13354A
 
 " coc-explorer
 let g:coc_explorer_global_presets = {
