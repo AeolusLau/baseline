@@ -76,7 +76,6 @@ RUN nvim +PlugInstall +qall && \
              coc-clangd \
              coc-cmake \
              coc-explorer \
-             coc-floaterm \
              coc-fzf-preview \
              coc-git \
              coc-java \

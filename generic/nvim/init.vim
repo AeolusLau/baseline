@@ -38,7 +38,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
-Plug 'voldikss/vim-floaterm'
 call plug#end()
 
 " vim-airline
@@ -57,7 +56,6 @@ let g:coc_global_extensions = [
 \  'coc-clangd',
 \  'coc-cmake',
 \  'coc-explorer',
-\  'coc-floaterm',
 \  'coc-fzf-preview',
 \  'coc-git',
 \  'coc-java',
