@@ -76,7 +76,7 @@ inoremap <silent><expr> <Tab>            coc#pum#visible() ? coc#pum#next(1) : c
     nmap                ga               <Plug>(EasyAlign)
     nmap <silent>       gd               <Plug>(coc-definition)
     nmap <silent>       gi               <Plug>(coc-implementation)
-    nmap                gq               :FormatCode<CR>
+    nmap <silent>       gq               :call CocActionAsync('format')<CR>
     nmap <silent>       gr               <Plug>(coc-references)
     nmap <silent>       gy               <Plug>(coc-type-definition)
     xmap                ic               <Plug>(coc-classobj-i)

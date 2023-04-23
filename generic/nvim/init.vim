@@ -23,9 +23,6 @@ set updatetime=100
 call plug#begin(stdpath('data') . '/plugged')
 Plug 'chrisbra/Colorizer'
 Plug 'github/copilot.vim'
-Plug 'google/vim-codefmt'
-Plug 'google/vim-glaive'
-Plug 'google/vim-maktaba'
 Plug 'honza/vim-snippets'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'joshdick/onedark.vim'

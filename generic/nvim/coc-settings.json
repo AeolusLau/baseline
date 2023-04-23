@@ -1,6 +1,7 @@
 {
     "coc.preferences.currentFunctionSymbolAutoUpdate": true,
     "coc.preferences.extensionUpdateCheck": "daily",
+    "coc.preferences.formatOnType": true,
     "coc.preferences.jumpCommand": "drop",
     "coc.preferences.silentAutoupdate": true,
     "diagnostic.displayByAle": false,
