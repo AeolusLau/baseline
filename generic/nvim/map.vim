@@ -10,12 +10,9 @@ nnoremap ` '
 nnoremap 0 ^
 nnoremap ^ 0
 
-nnoremap ( [(
-nnoremap ) ])
-nnoremap { b{w
-nnoremap } }w
-
 " sort i /.*map \(.silent.\)\? *\(.expr.\)\? \?/
+nnoremap                (                [(
+nnoremap                )                ])
     nmap <silent>       <C-/>            :nohlsearch<CR>
 inoremap <silent><expr> <C-b>            coc#pum#visible() ? coc#pum#scroll(0) : "\<C-b>"
 inoremap <silent><expr> <C-f>            coc#pum#visible() ? coc#pum#scroll(1) : "\<C-f>"
@@ -82,6 +79,8 @@ inoremap <silent><expr> <Tab>            coc#pum#visible() ? coc#pum#next(1) : c
 tnoremap                jk               <C-\><C-n>
 inoremap                jk               <Esc>
     nmap <silent>       K                :call ShowDocumentation()<CR>
+nnoremap                {                b{w
+nnoremap                }                }w
 
 function! ShowDocumentation()
   if CocAction('hasProvider', 'hover')
