@@ -34,16 +34,12 @@ inoremap <silent><expr> <CR>             coc#pum#visible() ? coc#_select_confirm
     nmap                <leader>b        :<C-u>CocCommand fzf-preview.GitBranches<CR>
     nmap                <leader>c        :<C-u>CocCommand<CR>
     nmap                <leader>d        :<C-u>CocCommand fzf-preview.GitStatus<CR>
-    xmap                <leader>f        <Plug>(coc-format-selected)
-    nmap                <leader>f        <Plug>(coc-format-selected)
-    nmap                <leader>ff       :<C-u>CocList files<CR>
-    nmap                <leader>fix      <Plug>(coc-fix-current)
+    nmap                <leader>f        :<C-u>CocList files<CR>
     nmap                <leader>j        :<C-u>CocCommand fzf-preview.Jumps<CR>  "Jump List
     nmap                <leader>l        :<C-u>CocListResume<CR>
     nmap                <leader>o        :CocCommand explorer --preset floating<CR>
 nnoremap                <leader>p        "+p
-nnoremap                <leader>Q        :q!<CR>
-nnoremap                <leader>q        :q<CR>
+    nmap                <leader>qf       <Plug>(coc-fix-current)
     nmap                <leader>r        :<C-u>CocList grep<CR>
     nmap <silent>       <leader>re       <Plug>(coc-codeaction-refactor)
     nmap                <leader>rf       <Plug>(coc-refactor)
@@ -66,6 +62,7 @@ nnoremap                <S-Tab>          :bprevious<CR>
 inoremap         <expr> <S-Tab>          coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 nnoremap                <Tab>            :bnext<CR>
 inoremap <silent><expr> <Tab>            coc#pum#visible() ? coc#pum#next(1) : coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" : CheckBackspace() ? "\<TAB>" : coc#refresh()
+    nmap <silent>       ==               :call CocActionAsync('format')<CR>
     nmap <silent>       [[               <Plug>(coc-diagnostic-prev)
     nmap <silent>       ]]               <Plug>(coc-diagnostic-next)
     xmap                ac               <Plug>(coc-classobj-a)
@@ -76,7 +73,6 @@ inoremap <silent><expr> <Tab>            coc#pum#visible() ? coc#pum#next(1) : c
     nmap                ga               <Plug>(EasyAlign)
     nmap <silent>       gd               <Plug>(coc-definition)
     nmap <silent>       gi               <Plug>(coc-implementation)
-    nmap <silent>       gq               :call CocActionAsync('format')<CR>
     nmap <silent>       gr               <Plug>(coc-references)
     nmap <silent>       gy               <Plug>(coc-type-definition)
     xmap                ic               <Plug>(coc-classobj-i)

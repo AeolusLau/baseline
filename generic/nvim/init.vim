@@ -86,10 +86,12 @@ let g:fzf_preview_lines_command = 'bat --color=always --plain --number'
 augroup default
   autocmd!
   autocmd FocusGained,BufEnter * :silent! checktime
-  autocmd FileType c,cpp setlocal colorcolumn=81 listchars+=leadmultispace:\|\  foldmethod=syntax foldlevel=100
-  autocmd FileType objc,objcpp,java setlocal colorcolumn=101 listchars+=leadmultispace:\|\  foldmethod=syntax foldlevel=100
+  autocmd FileType c,cpp,objc,objcpp,java setlocal listchars+=leadmultispace:\|\  foldmethod=syntax foldlevel=100
   autocmd FileType c,cpp,objc,objcpp,java :highlight Folded guibg=gray guifg=lightgreen
   autocmd FileType c,cpp,objc,objcpp,java :highlight NonText guifg=gray
+
+  autocmd FileType c,cpp setlocal colorcolumn=81
+  autocmd FileType objc,objcpp,java setlocal colorcolumn=101
 
   " Highlight the symbol and its references when holding the cursor
   autocmd CursorHold * silent call CocActionAsync('highlight')
