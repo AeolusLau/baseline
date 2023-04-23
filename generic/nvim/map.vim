@@ -44,7 +44,7 @@ inoremap <silent><expr> <CR>             coc#pum#visible() ? coc#_select_confirm
 nnoremap                <leader>p        "+p
 nnoremap                <leader>Q        :q!<CR>
 nnoremap                <leader>q        :q<CR>
-    nmap                <leader>r        :<C-u>CocCommand fzf-preview.ProjectGrep
+    nmap                <leader>r        :<C-u>CocList grep<CR>
     nmap <silent>       <leader>re       <Plug>(coc-codeaction-refactor)
     nmap                <leader>rf       <Plug>(coc-refactor)
     nmap                <leader>rg       :<C-u>CocCommand fzf-preview.ProjectGrep <C-r><C-w><CR>
