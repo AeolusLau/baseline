@@ -22,10 +22,11 @@ set updatetime=100
 
 call plug#begin(stdpath('data') . '/plugged')
 Plug 'chrisbra/Colorizer'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'github/copilot.vim'
 Plug 'honza/vim-snippets'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
-"Plug 'joshdick/onedark.vim'
+Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
@@ -37,16 +38,23 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 call plug#end()
 
+" onedark
+"let g:onedark_terminal_italics = 1
+"colorscheme onedark
+
+colorscheme tokyonight-night
+
+" Used to make vim-notify happy, needed only when the Normal group has no
+" guibg set, e.g., the default colorscheme.
+"highlight Normal guibg=black
+
 " vim-airline
 let g:airline#extensions#coc#enabled = 1
 let g:airline#extensions#fzf#enabled = 1
 let g:airline#extensions#hunks#coc_git = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-
-" onedark
-"let g:onedark_terminal_italics = 1
-"colorscheme onedark
+let g:airline_theme='onedark'
 
 " Copilot
 " Disable auto mapping of <tab> from Copilot, we will do it ourselves.
@@ -87,15 +95,14 @@ let g:fzf_preview_lines_command = 'bat --color=always --plain --number'
 "hi CocSearch ctermfg=12 guifg=#18A3FF
 "hi CocMenuSel ctermbg=109 guibg=#13354A
 
-" Used to make vim-notify happy
-highlight Normal guibg=black
-
 augroup default
   autocmd!
   autocmd FocusGained,BufEnter * :silent! checktime
   autocmd FileType c,cpp,objc,objcpp,java setlocal listchars+=leadmultispace:\|\  foldmethod=syntax foldlevel=100
-  autocmd FileType c,cpp,objc,objcpp,java :highlight Folded guibg=gray guifg=lightgreen
-  autocmd FileType c,cpp,objc,objcpp,java :highlight NonText guifg=gray
+
+  " Set these if the corresponding highlight group of current colorscheme is uglg.
+  "autocmd FileType c,cpp,objc,objcpp,java :highlight Folded guibg=gray guifg=lightgreen
+  "autocmd FileType c,cpp,objc,objcpp,java :highlight NonText guifg=gray
 
   autocmd FileType c,cpp setlocal colorcolumn=81
   autocmd FileType objc,objcpp,java setlocal colorcolumn=101

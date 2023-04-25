@@ -85,7 +85,7 @@ nnoremap                {                b{w
 nnoremap                }                }w
 
 inoremap <silent><expr> <Tab>            coc#pum#visible() ? coc#pum#next(1) :
-                                       \ exsits('b:_copilot.suggestions') ? copilot#Accept("\<Tab>") :
+                                       \ exists('b:_copilot.suggestions') ? copilot#Accept("\<Tab>") :
                                        \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
                                        \ CheckBackspace() ? "\<Tab>" :
                                        \ coc#refresh()
