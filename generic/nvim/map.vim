@@ -24,8 +24,8 @@ inoremap <silent><expr> <C-j>            coc#pum#visible() ? coc#pum#next(1) : c
 inoremap <silent><expr> <C-k>            coc#pum#visible() ? coc#pum#prev(1) : "\<C-k>"
 inoremap <silent><expr> <C-n>            coc#pum#visible() ? coc#pum#next(1) : coc#refresh()
 inoremap <silent><expr> <C-p>            coc#pum#visible() ? coc#pum#prev(0) : "\<C-p>"
-    nmap <silent>       <C-s>            <Plug>(coc-range-select)
-    xmap <silent>       <C-s>            <Plug>(coc-range-select)
+    nmap                <C-s>            <Plug>(coc-range-select)
+    xmap                <C-s>            <Plug>(coc-range-select)
 inoremap <silent><expr> <CR>             coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
     nmap <silent>       <leader>/        :nohlsearch<CR>
     nmap                <leader><space>  :<C-u>CocList<CR>
@@ -44,9 +44,8 @@ inoremap <silent><expr> <CR>             coc#pum#visible() ? coc#_select_confirm
     nmap                <leader>lr       :<C-u>CocListResume<CR>
     nmap                <leader>o        :CocCommand explorer --preset floating<CR>
 nnoremap                <leader>p        "+p
-    nmap                <leader>q        <Plug>(coc-fix-current)
     nmap                <leader>r        :<C-u>CocList grep<CR>
-    nmap <silent>       <leader>re       <Plug>(coc-codeaction-refactor)
+    nmap                <leader>re       <Plug>(coc-codeaction-refactor)
     nmap                <leader>rf       <Plug>(coc-refactor)
     nmap                <leader>rg       :<C-u>CocCommand fzf-preview.ProjectGrep <C-r><C-w><CR>
     nmap                <leader>rn       <Plug>(coc-rename)
@@ -61,8 +60,8 @@ nnoremap                <S-Tab>          :bprevious<CR>
 inoremap         <expr> <S-Tab>          coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 nnoremap                <Tab>            :bnext<CR>
     nmap <silent>       ==               :call CocActionAsync('format')<CR>
-    nmap <silent>       [[               <Plug>(coc-diagnostic-prev)
-    nmap <silent>       ]]               <Plug>(coc-diagnostic-next)
+    nmap                [[               <Plug>(coc-diagnostic-prev)
+    nmap                ]]               <Plug>(coc-diagnostic-next)
     xmap                ac               <Plug>(coc-classobj-a)
     omap                ac               <Plug>(coc-classobj-a)
     xmap                af               <Plug>(coc-funcobj-a)
@@ -72,11 +71,12 @@ nnoremap                <Tab>            :bnext<CR>
     nmap <silent>       cx               :bp\|bd#<CR>
     xmap                ga               <Plug>(EasyAlign)
     nmap                ga               <Plug>(EasyAlign)
-    nmap <silent>       gd               <Plug>(coc-definition)
-    nmap <silent>       gi               <Plug>(coc-implementation)
-    nmap <silent>       gr               <Plug>(coc-references)
+    nmap                gd               <Plug>(coc-definition)
+    nmap                gi               <Plug>(coc-implementation)
+    nmap                gq               <Plug>(coc-fix-current)
+    nmap                gr               <Plug>(coc-references)
     nmap <silent>       gs               :CocCommand fzf-preview.GitStatus<CR>
-    nmap <silent>       gy               <Plug>(coc-type-definition)
+    nmap                gy               <Plug>(coc-type-definition)
     xmap                ic               <Plug>(coc-classobj-i)
     omap                ic               <Plug>(coc-classobj-i)
     xmap                if               <Plug>(coc-funcobj-i)
