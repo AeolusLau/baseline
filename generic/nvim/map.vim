@@ -2,6 +2,11 @@
 
 let mapleader = " "
 
+" Fix the wired key interpretion of shift-tab in Warp.
+" https://github.com/warpdotdev/Warp/issues/903
+map  <C-y> <S-Tab>
+map! <C-y> <S-Tab>
+
 " Switch ` & '
 nnoremap ' `
 nnoremap ` '
