@@ -25,7 +25,7 @@ Plug 'chrisbra/Colorizer'
 Plug 'github/copilot.vim'
 Plug 'honza/vim-snippets'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
-Plug 'joshdick/onedark.vim'
+"Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
@@ -45,8 +45,12 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
 " onedark
-let g:onedark_terminal_italics = 1
-colorscheme onedark
+"let g:onedark_terminal_italics = 1
+"colorscheme onedark
+
+" Copilot
+" Disable auto mapping of <tab> from Copilot, we will do it ourselves.
+let g:copilot_no_tab_maps = v:true
 
 " coc.nvim
 let g:coc_global_extensions = [
@@ -68,9 +72,6 @@ let g:coc_global_extensions = [
 \  'coc-vimlsp',
 \]
 
-"hi CocSearch ctermfg=12 guifg=#18A3FF
-"i CocMenuSel ctermbg=109 guibg=#13354A
-
 " coc-explorer
 let g:coc_explorer_global_presets = {
 \   'floating': {
@@ -82,6 +83,12 @@ let g:coc_explorer_global_presets = {
 let g:fzf_preview_grep_cmd = 'rg --line-number --no-heading --color=never'
 let g:fzf_preview_command = 'bat --color=always --plain {-1}'
 let g:fzf_preview_lines_command = 'bat --color=always --plain --number'
+
+"hi CocSearch ctermfg=12 guifg=#18A3FF
+"hi CocMenuSel ctermbg=109 guibg=#13354A
+
+" Used to make vim-notify happy
+highlight Normal guibg=black
 
 augroup default
   autocmd!

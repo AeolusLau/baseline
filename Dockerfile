@@ -10,6 +10,7 @@ RUN apt update -y && \
         clangd \
         cmake \
         curl \
+        fd-find \
         git \
         golang \
         less \
@@ -18,6 +19,7 @@ RUN apt update -y && \
         python3 \
         python3-pip \
         ripgrep \
+        socat \
         ssh \
         tree \
         unzip \
@@ -102,6 +104,7 @@ RUN echo '' >> ~/.zshrc && \
     echo 'alias vi=nvim' >> ~/.zshrc && \
     echo 'alias vim=nvim' >> ~/.zshrc && \
     ln -s /usr/bin/batcat /usr/local/bin/bat && \
+    ln -s /usr/bin/fdfind /usr/local/bin/fd && \
     git config --global user.email aeoluslau@gmail.com && \
     git config --global user.name liulichao
 ENV MAKEFLAGS=-j6

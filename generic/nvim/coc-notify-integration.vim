@@ -1,5 +1,3 @@
-highlight Normal guibg=Black
-
 lua require('nvim-notify')
 
 function! s:DiagnosticNotify() abort
