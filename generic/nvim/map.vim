@@ -15,7 +15,8 @@ nnoremap ` '
 nnoremap 0 ^
 nnoremap ^ 0
 
-" sort i /.*map \(.silent.\)\? *\(.expr.\)\? \?/
+" Command to sort the following lines:
+"  :sort i /.*map \(.silent.\)\? *\(.expr.\)\? \?/
 nnoremap                (                [(
 nnoremap                )                ])
 inoremap <silent><expr> <C-b>            coc#pum#visible() ? coc#pum#scroll(0) : "\<C-b>"
@@ -73,7 +74,8 @@ nnoremap                <Tab>            :bnext<CR>
     nmap                ga               <Plug>(EasyAlign)
     nmap                gd               <Plug>(coc-definition)
     nmap                gi               <Plug>(coc-implementation)
-    nmap                gq               <Plug>(coc-fix-current)
+    nmap                gqgq              :call CocActionAsync('fixAll')<CR>
+    nmap                gqq              <Plug>(coc-fix-current)
     nmap                gr               <Plug>(coc-references)
     nmap <silent>       gs               :CocCommand fzf-preview.GitStatus<CR>
     nmap                gy               <Plug>(coc-type-definition)
