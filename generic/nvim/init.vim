@@ -2,7 +2,8 @@
 
 set autoindent cindent
 set cmdheight=1
-set conceallevel=3 concealcursor=nc
+set cursorline cursorcolumn
+set concealcursor=nc conceallevel=3
 set expandtab tabstop=2 shiftwidth=2
 set foldmethod=syntax foldlevel=100
 set hidden
@@ -109,6 +110,8 @@ augroup default
 
   " Highlight the symbol and its references when holding the cursor
   autocmd CursorHold * silent call CocActionAsync('highlight')
+
+  autocmd BufWritePost *.vim,*.lua source %
 augroup END
 
 runtime! map.vim
