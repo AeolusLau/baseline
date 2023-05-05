@@ -40,14 +40,17 @@ Plug 'vim-airline/vim-airline'
 call plug#end()
 
 " onedark
-"let g:onedark_terminal_italics = 1
-"colorscheme onedark
+" The next two lines give onedark a transparent background.
+"let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
+"autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white }) " `bg` will not be styled since there is no `bg` setting
+let g:onedark_terminal_italics = 1
+colorscheme onedark
 
-colorscheme tokyonight-night
+"colorscheme tokyonight-night
 
 " Used to make vim-notify happy, needed only when the Normal group has no
 " guibg set, e.g., the default colorscheme.
-"highlight Normal guibg=black
+highlight Normal guibg=black
 
 " vim-airline
 let g:airline#extensions#coc#enabled = 1

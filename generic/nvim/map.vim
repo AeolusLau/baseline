@@ -30,10 +30,10 @@ inoremap <silent><expr> <C-p>            coc#pum#visible() ? coc#pum#prev(0) : "
 inoremap <silent><expr> <CR>             coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
     nmap <silent>       <leader>/        :nohlsearch<CR>
     nmap                <leader><space>  :<C-u>CocList<CR>
-    vmap                <leader>a        <Plug>(coc-codeaction-selected)
-    nmap                <leader>a        <Plug>(coc-codeaction-selected)
-    nmap                <leader>ac       <Plug>(coc-codeaction-cursor)
-    nmap                <leader>as       <Plug>(coc-codeaction-source)
+    vmap <silent>       <leader>a        <Plug>(coc-codeaction-selected)
+    nmap <silent>       <leader>a        <Plug>(coc-codeaction-selected)
+    nmap <silent>       <leader>ac       <Plug>(coc-codeaction-cursor)
+    nmap <silent>       <leader>as       <Plug>(coc-codeaction-source)
     nmap                <leader>b        :<C-u>CocCommand fzf-preview.AllBuffers<CR>
     nmap                <leader>d        :<C-u>CocCommand fzf-preview.GitStatus<CR>
     nmap                <leader>f        :<C-u>CocList files<CR>
@@ -43,7 +43,7 @@ inoremap <silent><expr> <CR>             coc#pum#visible() ? coc#_select_confirm
     nmap                <leader>ln       :<C-u>CocListNext<CR>
     nmap                <leader>lp       :<C-u>CocListPrev<CR>
     nmap                <leader>lr       :<C-u>CocListResume<CR>
-    nmap                <leader>o        :CocCommand explorer --preset floating<CR>
+    nmap <silent>       <leader>o        :CocCommand explorer --preset floating<CR>
 nnoremap                <leader>p        "+p
     nmap                <leader>r        :<C-u>CocList grep<CR>
     nmap                <leader>re       <Plug>(coc-codeaction-refactor)
@@ -57,9 +57,9 @@ nnoremap                <leader>W        :wa<CR>
 vnoremap                <leader>y        "+y
 nnoremap                <leader>y        "+y
     nmap                <leader>z        :<C-u>CocList mru<CR>
-nnoremap                <S-Tab>          :bprevious<CR>
+nnoremap <silent>       <S-Tab>          :bprevious<CR>
 inoremap         <expr> <S-Tab>          coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-nnoremap                <Tab>            :bnext<CR>
+nnoremap <silent>       <Tab>            :bnext<CR>
     nmap <silent>       ==               :call CocActionAsync('format')<CR>
     nmap                [[               <Plug>(coc-diagnostic-prev)
     nmap                ]]               <Plug>(coc-diagnostic-next)
@@ -74,7 +74,7 @@ nnoremap                <Tab>            :bnext<CR>
     nmap                ga               <Plug>(EasyAlign)
     nmap                gd               <Plug>(coc-definition)
     nmap                gi               <Plug>(coc-implementation)
-    nmap                gqgq              :call CocActionAsync('fixAll')<CR>
+    nmap <silent>       gqgq              :call CocActionAsync('fixAll')<CR>
     nmap                gqq              <Plug>(coc-fix-current)
     nmap                gr               <Plug>(coc-references)
     nmap <silent>       gs               :CocCommand fzf-preview.GitStatus<CR>
