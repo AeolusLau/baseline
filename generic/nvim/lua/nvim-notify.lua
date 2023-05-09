@@ -1,5 +1,9 @@
 vim.notify = require("notify")
 
+vim.notify.setup({
+  background_colour = "#000000"
+})
+
 local coc_status_record = {}
 
 function coc_status_notify(msg, level)

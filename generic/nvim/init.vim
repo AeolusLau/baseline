@@ -11,7 +11,7 @@ set ignorecase smartcase
 set list listchars=tab:\ \ →,trail:-,extends:»,precedes:«,nbsp:+
 set nowrap scrolloff=5 sidescrolloff=5 linebreak
 set number relativenumber signcolumn=number
-set pumblend=10 winblend=10
+set pumblend=15 winblend=15
 set shortmess-=T "shortmess+=c
 set suffixes-=.h wildignore+=.class,.o,.obj,.swp,~ wildmenu wildmode=longest:full,full
 set termguicolors
@@ -41,16 +41,17 @@ call plug#end()
 
 " onedark
 " The next two lines give onedark a transparent background.
-"let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
-"autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white }) " `bg` will not be styled since there is no `bg` setting
+let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
+autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white }) " `bg` will not be styled since there is no `bg` setting
 let g:onedark_terminal_italics = 1
 colorscheme onedark
 
+"lua require("tokyonight").setup({ transparent = true })
 "colorscheme tokyonight-night
 
 " Used to make vim-notify happy, needed only when the Normal group has no
 " guibg set, e.g., the default colorscheme.
-highlight Normal guibg=black
+"highlight Normal guibg=black
 
 " vim-airline
 let g:airline#extensions#coc#enabled = 1
