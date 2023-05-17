@@ -11,7 +11,7 @@ set ignorecase smartcase
 set list listchars=tab:\ \ →,trail:-,extends:»,precedes:«,nbsp:+
 set nowrap scrolloff=5 sidescrolloff=5 linebreak
 set number relativenumber signcolumn=number
-set pumblend=15 winblend=15
+set pumblend=15
 set shortmess-=T "shortmess+=c
 set suffixes-=.h wildignore+=.class,.o,.obj,.swp,~ wildmenu wildmode=longest:full,full
 set termguicolors
