@@ -4,5 +4,5 @@ set -e
 set -x
 
 cp -rf ~/.ssh .
-docker build --build-arg TERM=$TERM --build-arg COLORTERM=$COLORTERM -t baseline .
+docker.lima build --build-arg TERM=xterm-256color --build-arg COLORTERM=truecolor -t baseline .
 rm -rf .ssh
