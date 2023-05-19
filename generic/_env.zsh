@@ -24,5 +24,6 @@ alias view='nvim -R'
 alias rga="rg --no-config --smart-case --type-add 'cpp:*.ipp' --type c --type cpp --type java --type kotlin --type objc --type objcpp --type swift --type gradle --type cmake"
 alias rgn='rg --no-config --smart-case --no-ignore'
 alias flushdns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
+alias docker=docker.lima
 
 [[ ! -f ~/.env.zsh.local ]] || source ~/.env.zsh.local

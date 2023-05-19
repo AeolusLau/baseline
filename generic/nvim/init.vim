@@ -23,8 +23,9 @@ set updatetime=100
 
 call plug#begin(stdpath('data') . '/plugged')
 Plug 'chrisbra/Colorizer'
+Plug 'exafunction/codeium.vim'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-Plug 'github/copilot.vim'
+"Plug 'github/copilot.vim'
 Plug 'honza/vim-snippets'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'joshdick/onedark.vim'
