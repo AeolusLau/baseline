@@ -25,13 +25,11 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'chrisbra/Colorizer'
 Plug 'exafunction/codeium.vim'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-"Plug 'github/copilot.vim'
 Plug 'honza/vim-snippets'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-"Plug 'junegunn/vim-easy-align'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rcarriga/nvim-notify'
 Plug 'tpope/vim-fugitive'
@@ -62,9 +60,10 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='onedark'
 
-" Copilot
-" Disable auto mapping of <tab> from Copilot, we will do it ourselves.
-let g:copilot_no_tab_maps = v:true
+" Codeium
+" Disalbe the default mapping of <Tab> from codeium, we will do it ourselves
+let g:codeium_no_map_tab = v:true
+let g:codeium_idle_delay = 100
 
 " coc.nvim
 let g:coc_global_extensions = [
