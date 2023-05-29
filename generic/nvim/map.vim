@@ -4,8 +4,8 @@ let mapleader = " "
 
 " Fix the wired key interpretion of shift-tab in Warp.
 " https://github.com/warpdotdev/Warp/issues/903
-map  <C-y> <S-Tab>
-map! <C-y> <S-Tab>
+"map  <C-y> <S-Tab>
+"map! <C-y> <S-Tab>
 
 " Switch ` & '
 nnoremap ' `
@@ -21,10 +21,13 @@ nnoremap                (                [(
 nnoremap                )                ])
 inoremap <silent><expr> <C-b>            coc#pum#visible() ? coc#pum#scroll(0) : "\<C-b>"
 inoremap <silent><expr> <C-f>            coc#pum#visible() ? coc#pum#scroll(1) : "\<C-f>"
-inoremap <silent><expr> <C-j>            coc#pum#visible() ? coc#pum#next(1) : coc#refresh()
-inoremap <silent><expr> <C-k>            coc#pum#visible() ? coc#pum#prev(1) : "\<C-k>"
+inoremap                <C-h>            <Left>
+inoremap                <C-j>            <Down>
+inoremap                <C-k>            <Up>
+inoremap                <C-l>            <Right>
 inoremap <silent><expr> <C-n>            coc#pum#visible() ? coc#pum#next(1) : coc#refresh()
-inoremap <silent><expr> <C-p>            coc#pum#visible() ? coc#pum#prev(0) : "\<C-p>"
+inoremap <silent><expr> <C-p>            coc#pum#visible() ? coc#pum#prev(1) : "\<C-p>"
+inoremap <silent><expr> <C-y>            exists('b:_codeium_completions') ? codeium#Accept() : "\<C-y>"
     nmap                <C-s>            <Plug>(coc-range-select)
     xmap                <C-s>            <Plug>(coc-range-select)
 inoremap <silent><expr> <CR>             coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
@@ -74,7 +77,7 @@ nnoremap <silent>       <Tab>            :bnext<CR>
     nmap                ga               <Plug>(EasyAlign)
     nmap                gd               <Plug>(coc-definition)
     nmap                gi               <Plug>(coc-implementation)
-    nmap <silent>       gqgq              :call CocActionAsync('fixAll')<CR>
+    nmap <silent>       gqgq             :call CocActionAsync('fixAll')<CR>
     nmap                gqq              <Plug>(coc-fix-current)
     nmap                gr               <Plug>(coc-references)
     nmap <silent>       gs               :CocCommand fzf-preview.GitStatus<CR>
