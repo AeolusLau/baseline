@@ -4,16 +4,17 @@ RUN apt update -y && \
     apt upgrade -y && \
     apt install -y --no-install-recommends \
         bat \
-        clang \
-        clang-format \
+        clang-15 \
+        clang-format-15 \
         clang-tidy-15 \
-        clangd \
+        clangd-15 \
         cmake \
         curl \
         fd-find \
         git \
         golang \
         less \
+        lldb-15 \
         make \
         patch \
         python3 \
@@ -107,8 +108,19 @@ RUN echo '' >> ~/.zshrc && \
     ln -s /usr/bin/fdfind /usr/local/bin/fd && \
     git config --global user.email aeoluslau@gmail.com && \
     git config --global user.name liulichao
+ENV PATH=$PATH:/usr/lib/llvm-15/bin
 ENV MAKEFLAGS=-j6
 ENV CPLUS_INCLUDE_PATH=$(CPLUS_INCLUDE_PATH):/usr/include/c++/11:/usr/include/x86_64-linux-gnu/c++/11
+
+# Make lldb works in the container. See: https://github.com/llvm/llvm-project/issues/55575
+RUN ln -sf /usr/local /usr/lib/ && \
+    ln -sf /usr/lib/llvm-15/lib/python3.10/dist-packages/lldb /usr/local/lib/python3.10/dist-packages/
+
+# As docker disabled debugging in containers by default, the arguments: 
+#
+#   --cap-add=SYS_PTRACE --security-opt seccomp=unconfined
+#
+# are required for C++ memory profiling and debugging in Docker.
 
 WORKDIR /root
 CMD [ "zsh" ]

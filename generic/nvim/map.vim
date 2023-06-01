@@ -40,7 +40,7 @@ inoremap <silent><expr> <CR>             coc#pum#visible() ? coc#_select_confirm
     nmap                <leader>b        :<C-u>CocCommand fzf-preview.AllBuffers<CR>
     nmap                <leader>d        :<C-u>CocCommand fzf-preview.GitStatus<CR>
     nmap                <leader>f        :<C-u>CocList files<CR>
-    nmap                <leader>j        :<C-u>CocCommand fzf-preview.Jumps<CR>  "Jump List
+    nmap                <leader>j        :<C-u>CocCommand fzf-preview.Jumps<CR>
     nmap                <leader>lf       :<C-u>CocListFirst<CR>
     nmap                <leader>ll       :<C-u>CocListLast<CR>
     nmap                <leader>ln       :<C-u>CocListNext<CR>
