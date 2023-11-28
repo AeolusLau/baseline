@@ -57,6 +57,7 @@ ENV PATH=$PATH:/usr/lib/llvm-15/bin
 ENV MAKEFLAGS=-j6
 ENV CPLUS_INCLUDE_PATH=$(CPLUS_INCLUDE_PATH):/usr/include/c++/11:/usr/include/x86_64-linux-gnu/c++/11
 
+# Build neovim from source code.
 RUN git clone https://github.com/neovim/neovim.git && \ 
     cd neovim && \
     git checkout stable && \
@@ -111,6 +112,8 @@ RUN echo '' >> ~/.zshrc && \
     echo 'alias vim=nvim' >> ~/.zshrc && \
     ln -s /usr/bin/batcat /usr/local/bin/bat && \
     ln -s /usr/bin/fdfind /usr/local/bin/fd && \
+    ln -s ~/inception/baseline/generic/_gitignore ~/.gitignore && \
+    git config --global core.excludesFile ~/.gitignore && \
     git config --global user.email aeoluslau@gmail.com && \
     git config --global user.name liulichao
 
