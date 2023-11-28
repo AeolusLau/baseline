@@ -11,6 +11,7 @@ RUN apt update -y && \
         cmake \
         curl \
         fd-find \
+        gettext \
         git \
         golang \
         less \
@@ -36,9 +37,7 @@ RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master
     git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions && \
     sed -i '/^ZSH_THEME=/c\ZSH_THEME="powerlevel10k\/powerlevel10k"' ~/.zshrc && \
     sed -i '/^plugins=(git)/c\plugins=(git z zsh-autosuggestions)' ~/.zshrc && \
-    mkdir -p ~/.cache/gitstatus && \
-    cd ~/.cache/gitstatus && \
-    curl -fsSL https://github.com/romkatv/gitstatus/releases/download/v1.5.4/gitstatusd-linux-x86_64.tar.gz | tar zxv
+    /root/.oh-my-zsh/custom/themes/powerlevel10k/gitstatus/install
 # The following there instructions is used to mock configure wizard of p10k
 COPY dedicated/_p10k.zsh /root/.p10k.zsh
 COPY dedicated/zshrc.patch /tmp/
@@ -51,16 +50,22 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
     apt clean && \
     rm -rf /var/lib/apt/lists/* && \
     corepack enable  # Enable yarn & pnpm.
-COPY generic/_npmrc /root/.npmrc
+#COPY generic/_npmrc /root/.npmrc
 
-# Install a newer version of neovim, and install configures.
-RUN curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage && \
-    chmod u+x nvim.appimage && \
-    ./nvim.appimage --appimage-extract && \
-    cd squashfs-root/usr && \
-    find . -type f -exec cp --parents {} /usr/local/ \; && \
-    cd ../.. && \
-    rm -rf squashfs-root nvim.appimage
+# Set envrionmnet variable to build neovim
+ENV PATH=$PATH:/usr/lib/llvm-15/bin
+ENV MAKEFLAGS=-j6
+ENV CPLUS_INCLUDE_PATH=$(CPLUS_INCLUDE_PATH):/usr/include/c++/11:/usr/include/x86_64-linux-gnu/c++/11
+
+RUN git clone https://github.com/neovim/neovim.git && \ 
+    cd neovim && \
+    git checkout stable && \
+    (make CMAKE_BUILD_TYPE=Release || true) && \
+    cmake -S . -B build -DCMAKE_BUILD_TYPE=Release && \
+    cmake --build build && \
+    cmake --install build && \
+    cd / && \
+    rm -rf neovim
 RUN pip3 install pynvim && \
     pip3 cache purge && \
     npm install -g neovim && \
@@ -108,9 +113,6 @@ RUN echo '' >> ~/.zshrc && \
     ln -s /usr/bin/fdfind /usr/local/bin/fd && \
     git config --global user.email aeoluslau@gmail.com && \
     git config --global user.name liulichao
-ENV PATH=$PATH:/usr/lib/llvm-15/bin
-ENV MAKEFLAGS=-j6
-ENV CPLUS_INCLUDE_PATH=$(CPLUS_INCLUDE_PATH):/usr/include/c++/11:/usr/include/x86_64-linux-gnu/c++/11
 
 # Make lldb works in the container. See: https://github.com/llvm/llvm-project/issues/55575
 RUN ln -sf /usr/local /usr/lib/ && \
