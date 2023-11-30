@@ -106,6 +106,7 @@ RUN sed -i '/^}/c\,\"disabled\":\[\"coc-spell-checker\"\]}' ~/.config/coc/extens
 
 # Some convenient configure.
 COPY .ssh /root/.ssh
+COPY .codeium/config.json /root/.codeium/config.json
 RUN echo '' >> ~/.zshrc && \
     echo 'alias python=python3' >> ~/.zshrc && \
     echo 'alias vi=nvim' >> ~/.zshrc && \
