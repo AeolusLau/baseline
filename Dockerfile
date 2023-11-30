@@ -17,6 +17,7 @@ RUN apt update -y && \
         less \
         lldb-15 \
         make \
+        openjdk-19-jdk \
         patch \
         python3 \
         python3-pip \
@@ -79,7 +80,9 @@ RUN mkdir -p ~/inception ~/.config && \
     mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}"/clangd && \
     ln -s ~/inception/baseline/generic/_clangd "${XDG_CONFIG_HOME:-$HOME/.config}"/clangd/config.yaml && \
     ln -s ~/inception/baseline/generic/_clang-tidy ~/.clang-tidy && \
-    ln -s ~/inception/baseline/generic/_clang-format ~/.clang-format
+    ln -s ~/inception/baseline/generic/_clang-format ~/.clang-format && \
+    mkdir -p ~/.config/coc/extensions/coc-java-data/jdk-17.0.8/javajre-linux-arm64 && \
+    ln -s /usr/lib/jvm/java-19-openjdk-arm64 ~/.config/coc/extensions/coc-java-data/jdk-17.0.8/javajre-linux-arm64/jre
 RUN nvim +PlugInstall +qall && \
     nvim +'CocInstall -sync \
              coc-clangd \
