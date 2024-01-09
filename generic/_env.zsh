@@ -25,5 +25,7 @@ alias rga="rg --no-config --smart-case --type-add 'cpp:*.ipp' --type c --type cp
 alias rgn='rg --no-config --smart-case --no-ignore'
 alias flushdns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
 alias docker=docker.lima
+alias work='docker run -it --rm -h workspace -v workspace:/root/workspace -v m2:/root/.m2 baseline'
+alias base='docker run -it --rm -h baseline baseline'
 
 [[ ! -f ~/.env.zsh.local ]] || source ~/.env.zsh.local

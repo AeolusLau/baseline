@@ -81,6 +81,7 @@ let g:coc_global_extensions = [
 \  'coc-pyright',
 \  'coc-sh',
 \  'coc-snippets',
+\  'coc-sql',
 \  'coc-spell-checker',
 \  'coc-vimlsp',
 \]

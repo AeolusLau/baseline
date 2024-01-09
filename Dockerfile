@@ -99,6 +99,7 @@ RUN nvim +PlugInstall +qall && \
              coc-pyright \
              coc-sh \
              coc-snippets \
+             coc-sql \
              coc-vimlsp' \
          +qall && \
     "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/plugged/fzf/install --all --no-bash --no-fish && \
