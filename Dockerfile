@@ -59,9 +59,8 @@ ENV MAKEFLAGS=-j6
 ENV CPLUS_INCLUDE_PATH=$(CPLUS_INCLUDE_PATH):/usr/include/c++/11:/usr/include/x86_64-linux-gnu/c++/11
 
 # Build neovim from source code.
-RUN git clone https://github.com/neovim/neovim.git && \ 
+RUN git clone --branch stable --depth 1 https://github.com/neovim/neovim.git && \
     cd neovim && \
-    git checkout stable && \
     (make CMAKE_BUILD_TYPE=Release || true) && \
     cmake -S . -B build -DCMAKE_BUILD_TYPE=Release && \
     cmake --build build && \
